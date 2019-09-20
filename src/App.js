@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+//import logo from './logo.svg';
+//import './App.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import NavBar from "./components/011-navbar/NavBar";
+import NavBar2 from "./components/011-navbar/NavBar2";
 
+import Jumbo from "./components/021-jumbo/Jumbo";
+import ReduxPlayground from "./components/redux/ReduxPlayground";
+///
+
+import MenuCard from "../src/components/011-navbar/MenuCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee, faHome } from "@fortawesome/free-solid-svg-icons";
+import ContactForm from "../src/components/08-contact/ContactForm";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route path="/" component={NavBar2} />
+      <Route exact path="/" component={Jumbo} />
+      <Route exact path="/contact" component={ContactForm} />
+
+      <Route path="/" component={ReduxPlayground} />
     </div>
   );
 }
