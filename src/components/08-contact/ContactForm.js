@@ -1,7 +1,32 @@
 import React from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import ContactSocials from "./ContactSocials";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPaperPlane,
+  faWeixin,
+  faWhatsapp,
+  faWhatsappSquare,
+  faLinkedin,
+  faLinkedinIn,
+  faFacebook,
+  faFacebookF,
+  faFacebookSquare,
+  faInstagram,
+  faTwitter,
+  faTwitterSquare,
+  faWeibo,
+  faQQ,
+  faSkype,
+  faFacebookMessenger,
+  faLine,
+  faTelegram,
+  faMobile,
+  faEnvelope,
+  faEnvelopeSquare,
+  faVoicemail,
+  faMailbox
+} from "@fortawesome/free-solid-svg-icons";
 export default function ContactForm() {
   return (
     <div>
@@ -11,6 +36,8 @@ export default function ContactForm() {
         <Row>
           <Col xs={12} sm={5}>
             <div>Leave A Message</div>
+            <ContactSocials />
+            <div>... talk about information overload!</div>
           </Col>
           <Col xs={12} sm={7}>
             <Form>

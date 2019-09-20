@@ -25,7 +25,8 @@ import {
   faLinkedinIn,
   faFacebook,
   faFacebookF,
-  faFacebookSquare
+  faFacebookSquare,
+  faFeather
 } from "@fortawesome/free-solid-svg-icons";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 //<Link to="/about/">About</Link>
@@ -63,11 +64,15 @@ export default function NavBar() {
                 subtitle="& rants"
               />
             </Nav.Link>
-            <Nav.Link href="#features">
-              <Link to="/contact">
-                <MenuCardM icon="email" title="Contact " subtitle="me!" />
-              </Link>
-            </Nav.Link>
+            <Link to="/contact">
+              <Nav.Link href="#features">
+                <MenuCard
+                  icon={<FontAwesomeIcon icon={faFeather} size="5x" />}
+                  title="My Blog"
+                  subtitle="& rants"
+                />
+              </Nav.Link>
+            </Link>
           </CardGroup>
         </Nav>
         <Nav>
