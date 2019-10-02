@@ -68,8 +68,8 @@ export default function NavBar() {
               <Nav.Link href="#features">
                 <MenuCard
                   icon={<FontAwesomeIcon icon={faFeather} size="5x" />}
-                  title="My Blog"
-                  subtitle="& rants"
+                  title="Contact"
+                  subtitle="write me"
                 />
               </Nav.Link>
             </Link>

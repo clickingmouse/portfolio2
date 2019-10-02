@@ -28,6 +28,7 @@ import {
   faMailbox
 } from "@fortawesome/free-solid-svg-icons";
 export default function ContactForm() {
+  // <Form.Check type="checkbox" label="Check me out" />
   return (
     <div>
       Contact Form
@@ -51,14 +52,18 @@ export default function ContactForm() {
 
               <Form.Group controlId="formTitle">
                 <Form.Label>Title</Form.Label>
-                <Form.Control type="text" placeholder="Title" />
+                <Form.Control size="lg" type="text" placeholder="Title" />
               </Form.Group>
 
-              <Form.Control size="lg" type="text" placeholder="Large text" />
+              <Form.Control
+                as="textarea"
+                size="lg"
+                type="textarea"
+                placeholder="Large text"
+                rows="5"
+              />
 
-              <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-              </Form.Group>
+              <Form.Group controlId="formBasicCheckbox"></Form.Group>
               <Button variant="primary" type="submit">
                 <FontAwesomeIcon icon={faPaperPlane} />
               </Button>
