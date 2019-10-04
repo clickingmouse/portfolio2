@@ -4,8 +4,9 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import NavBar from "./components/011-navbar/NavBar";
 import NavBar2 from "./components/011-navbar/NavBar2";
-
+import Footer from "./components/011-navbar/Footer";
 import Jumbo from "./components/021-jumbo/Jumbo";
+import Text from "./components/021-jumbo/Text";
 import ReduxPlayground from "./components/redux/ReduxPlayground";
 ///
 
@@ -18,9 +19,9 @@ function App() {
     <div className="App">
       <Route path="/" component={NavBar2} />
       <Route exact path="/" component={Jumbo} />
+      <Route exact path="/" component={Text} />
+      <Route path="/" component={Footer} />
       <Route exact path="/contact" component={ContactForm} />
-
-      <Route path="/" component={ReduxPlayground} />
     </div>
   );
 }

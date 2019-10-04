@@ -44,9 +44,11 @@ export default function NavBar() {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="m-auto">
           <CardGroup>
-            <Nav.Link href="#home">
-              <MenuCardM icon="home" title="Home" subtitle="Sweet Home" />
-            </Nav.Link>
+            <Link to="/">
+              <Nav.Link href="#home">
+                <MenuCardM icon="home" title="Home" subtitle="Sweet Home" />
+              </Nav.Link>
+            </Link>
             <Nav.Link href="#features">
               <MenuCardM
                 icon="assignment"

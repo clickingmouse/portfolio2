@@ -7,7 +7,12 @@ import MainStack from "./MainStack";
 import Misc from "./Misc";
 export default function Jumbo() {
   return (
-    <Jumbotron fluid bg="dark" style={{ background: "#282828" }}>
+    <Jumbotron
+      fluid
+      bg="dark"
+      style={{ background: "#282828" }}
+      className="my-0"
+    >
       <Container style={{ color: "#66ff66" }}>
         <MainStack />
         <Misc />
