@@ -45,9 +45,7 @@ export default function NavBar() {
         <Nav className="m-auto">
           <CardGroup>
             <Link to="/">
-              <Nav.Link href="#home">
-                <MenuCardM icon="home" title="Home" subtitle="Sweet Home" />
-              </Nav.Link>
+              <MenuCardM icon="home" title="Home" subtitle="Sweet Home" />
             </Link>
             <Nav.Link href="#features">
               <MenuCardM
@@ -59,21 +57,19 @@ export default function NavBar() {
             <Nav.Link href="#features">
               <MenuCardM icon="info" title="About" subtitle="me!" />
             </Nav.Link>
-            <Nav.Link href="#features">
+            <Link to="/blog">
               <MenuCard
                 icon={<FontAwesomeIcon icon={faBlog} size="5x" />}
                 title="My Blog"
                 subtitle="& rants"
               />
-            </Nav.Link>
+            </Link>
             <Link to="/contact">
-              <Nav.Link href="#features">
-                <MenuCard
-                  icon={<FontAwesomeIcon icon={faFeather} size="5x" />}
-                  title="Contact"
-                  subtitle="write me"
-                />
-              </Nav.Link>
+              <MenuCard
+                icon={<FontAwesomeIcon icon={faFeather} size="5x" />}
+                title="Contact"
+                subtitle="write me"
+              />
             </Link>
           </CardGroup>
         </Nav>

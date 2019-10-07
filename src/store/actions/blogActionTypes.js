@@ -1,0 +1,18 @@
+export const GET_BLOG_POSTS = "GET_BLOG_POSTS";
+export const ADD_BLOG_POST = "ADD_BLOG_POST";
+export const DELETE_BLOG_POST = "DELETE_BLOG_POST";
+export const BLOG_POSTS_LOADING = "BLOG_POSTS_LOADING";
+export const SET_BLOG_VISIBILITY_FILTER = "SET_BLOG_VISIBILITY_FILTER";
+export const TOGGLE_BLOG = "TOGGLE_BLOG";
+
+export const VisibilityFilters = {
+  SHOW_ALL_BLOGS: "SHOW_ALL_BLOGS",
+  SHOW_COMPLETED_BLOG: "SHOW_COMPLETED_BLOG",
+  SHOW_ACTIVE_BLOG: "SHOW_ACTIVE_BLOG"
+};
+
+//SET_BLOG_VISIBILITY_FILTER
+/*
+ * other constants
+ */
+//           VisibilityFilters

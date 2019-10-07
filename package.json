@@ -15,7 +15,10 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
-    "redux": "^4.0.4"
+    "react-transition-group": "^4.3.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
+    "uuid": "^3.3.3"
   },
   "scripts": {
     "start": "PORT=3030 react-scripts start",
@@ -23,6 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:5001",
   "eslintConfig": {
     "extends": "react-app"
   },

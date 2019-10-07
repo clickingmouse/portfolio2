@@ -8,20 +8,25 @@ import Footer from "./components/011-navbar/Footer";
 import Jumbo from "./components/021-jumbo/Jumbo";
 import Text from "./components/021-jumbo/Text";
 import ReduxPlayground from "./components/redux/ReduxPlayground";
+import Blog from "./components/090-blog/Blog";
+
 ///
 
 import MenuCard from "../src/components/011-navbar/MenuCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee, faHome } from "@fortawesome/free-solid-svg-icons";
 import ContactForm from "../src/components/08-contact/ContactForm";
+
 function App() {
   return (
     <div className="App">
       <Route path="/" component={NavBar2} />
       <Route exact path="/" component={Jumbo} />
       <Route exact path="/" component={Text} />
-      <Route path="/" component={Footer} />
+
       <Route exact path="/contact" component={ContactForm} />
+      <Route exact path="/blog" component={Blog} />
+      <Route path="/" component={Footer} />
     </div>
   );
 }

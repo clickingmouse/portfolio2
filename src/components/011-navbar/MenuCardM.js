@@ -18,7 +18,7 @@ export default function MenuCard(props) {
       <Card.Body className="p-0">
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>
-          <p className="m-0 p-0">{props.subtitle}</p>
+          <span className="m-0 p-0">{props.subtitle}</span>
         </Card.Text>
       </Card.Body>
     </Card>
