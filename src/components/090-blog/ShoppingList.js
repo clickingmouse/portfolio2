@@ -23,7 +23,7 @@ function ShoppingList(props) {
     { id: uuid(), name: "EGGs" },
     { id: uuid(), name: "MilK" },
     { id: uuid(), name: "SteaK" },
-    { id: uuid(), name: "WaTeR" }
+    { id: uuid(), name: "WaTe" }
   ]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function ShoppingList(props) {
   //  const { items } = items;
   console.log("-----");
   console.log(state);
-  console.log(items);
+  console.log(props);
   return (
     <div style={{ color: "black" }}>
       ShopppingList
@@ -56,7 +56,7 @@ function ShoppingList(props) {
         </Button>
         <ListGroup>
           <TransitionGroup className="shopping-list">
-            {items.map(({ id, name }) => (
+            {props.item.items.map(({ id, name }) => (
               <CSSTransition key={id} timeout={500} classNames="fade">
                 <ListGroup.Item>
                   <Button
