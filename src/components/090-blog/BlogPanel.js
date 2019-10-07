@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Container, ListGroup } from "react-bootstrap";
 import uuid from "uuid";
+import ItemModal from "./ItemModal";
 import PropTypes from "prop-types";
 function BlogPanel(props) {
   //posts

@@ -5,7 +5,9 @@ import { faUserInjured } from "@fortawesome/free-solid-svg-icons";
 import uuid from "uuid";
 import "./shoppingList.css";
 import { connect } from "react-redux";
-import { getItems } from "../../store/actions/itemActions";
+//actions
+import { getItems, deleteItem } from "../../store/actions/itemActions";
+import ItemModal from "./ItemModal";
 
 import PropTypes from "prop-types";
 
@@ -33,6 +35,11 @@ function ShoppingList(props) {
     //console.log(props.getItems);
   }, []);
 
+  const onDeleteClick = id => {
+    //console.log("---->", id);
+    props.deleteItem(id);
+  };
+
   //  const { items } = items;
   console.log("-----");
   console.log(state);
@@ -42,18 +49,8 @@ function ShoppingList(props) {
       ShopppingList
       <hr />
       <Container>
-        <Button
-          color="dark"
-          style={{ marginBottom: "2rem" }}
-          onClick={() => {
-            const name = prompt("enter item");
-            if (name) {
-              setItems([...items, { id: uuid, name: name }]);
-            }
-          }}
-        >
-          Add Item
-        </Button>
+        <ItemModal />
+
         <ListGroup>
           <TransitionGroup className="shopping-list">
             {props.item.items.map(({ id, name }) => (
@@ -63,15 +60,19 @@ function ShoppingList(props) {
                     className="remove-btn"
                     color="danger"
                     size="sm"
-                    onClick={() => {
+                    onClick={
+                      onDeleteClick.bind(this, id)
+                      //() => {
                       // this.setState(state=>({
                       // items: state.items.filter(item => item.id!==id )}))
-                      setItems(items => items.filter(item => item.id !== id));
-                    }}
+                      //*
+                      //   setItems(items => items.filter(item => item.id !== id));
+                      // }
+                    }
                   >
                     &times;
                   </Button>
-                  {name}
+                  {name} - {id}
                 </ListGroup.Item>
               </CSSTransition>
             ))}
@@ -93,11 +94,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    getItems: () => dispatch(getItems())
+    getItems: () => dispatch(getItems()),
+    deleteItem: id => dispatch(deleteItem(id))
   };
 };
 
+//  { getItems }
 export default connect(
   mapStateToProps,
-  { getItems }
+  mapDispatchToProps
 )(ShoppingList);
