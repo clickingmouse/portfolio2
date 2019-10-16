@@ -3,11 +3,16 @@ import todoBlog from "./blogReducers";
 import visibilityFilter from "./blogReducers";
 
 import itemReducer from "./itemReducer";
-import postReducers from "./postReducers";
+import postReducer from "./postReducer";
+
+import errorReducer from "./errorReducer";
+import authReducer from "./authReducer";
 
 export default combineReducers({
   blog: todoBlog,
-  post: postReducers,
+  post: postReducer,
   vis: visibilityFilter,
-  item: itemReducer
+  item: itemReducer,
+  error: errorReducer,
+  auth: authReducer
 });

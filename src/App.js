@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 //import logo from './logo.svg';
 //import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -17,7 +17,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee, faHome } from "@fortawesome/free-solid-svg-icons";
 import ContactForm from "../src/components/08-contact/ContactForm";
 
-function App() {
+import { loadUser } from "./store/actions/authActions";
+
+function App(props) {
+  console.log(props);
+  //console.log(store);
+
+  useEffect(() => {
+    // props.store.dispatch(loadUser());
+  }, []);
+
   return (
     <div className="App">
       <Route path="/" component={NavBar2} />

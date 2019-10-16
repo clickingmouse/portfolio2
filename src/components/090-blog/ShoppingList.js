@@ -12,14 +12,14 @@ import ItemModal from "./ItemModal";
 import PropTypes from "prop-types";
 
 function ShoppingList(props) {
-  const [state, setState] = useState({
-    items: [
-      { id: uuid(), name: "Eggs" },
-      { id: uuid(), name: "Milk" },
-      { id: uuid(), name: "Steak" },
-      { id: uuid(), name: "Water" }
-    ]
-  });
+  // const [state, setState] = useState({
+  //   items: [
+  //     { id: uuid(), name: "Eggs" },
+  //     { id: uuid(), name: "Milk" },
+  //     { id: uuid(), name: "Steak" },
+  //     { id: uuid(), name: "Water" }
+  //   ]
+  // });
 
   const [items, setItems] = useState([
     { id: uuid(), name: "EGGs" },
@@ -42,7 +42,7 @@ function ShoppingList(props) {
 
   //  const { items } = items;
   console.log("-----");
-  console.log(state);
+  //console.log(state);
   console.log(props);
   return (
     <div style={{ color: "black" }}>
@@ -53,15 +53,15 @@ function ShoppingList(props) {
 
         <ListGroup>
           <TransitionGroup className="shopping-list">
-            {props.item.items.map(({ id, name }) => (
-              <CSSTransition key={id} timeout={500} classNames="fade">
+            {props.item.items.map(({ _id, name }) => (
+              <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroup.Item>
                   <Button
                     className="remove-btn"
                     color="danger"
                     size="sm"
                     onClick={
-                      onDeleteClick.bind(this, id)
+                      onDeleteClick.bind(this, _id)
                       //() => {
                       // this.setState(state=>({
                       // items: state.items.filter(item => item.id!==id )}))
@@ -72,7 +72,7 @@ function ShoppingList(props) {
                   >
                     &times;
                   </Button>
-                  {name} - {id}
+                  {name} - {_id}
                 </ListGroup.Item>
               </CSSTransition>
             ))}
