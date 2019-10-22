@@ -28,6 +28,9 @@ import {
   faFacebookSquare,
   faFeather
 } from "@fortawesome/free-solid-svg-icons";
+
+import RegisterModal from "../auth/RegisterModal";
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 //<Link to="/about/">About</Link>
 export default function NavBar() {
@@ -75,6 +78,7 @@ export default function NavBar() {
         </Nav>
         <Nav>
           <Nav.Link href="#deets">More deets</Nav.Link>
+          <RegisterModal />
           <Nav.Link eventKey={2} href="#memes">
             Dank memes
           </Nav.Link>

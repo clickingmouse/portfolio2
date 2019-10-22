@@ -12,6 +12,7 @@ const ItemModal = props => {
 
   const handleChange = e => {
     //    setName({ [e.targe.name]: e.target.value });
+    console.log("itemHandleChange");
     setName(e.target.value);
   };
 
@@ -68,8 +69,9 @@ const ItemModal = props => {
   );
 };
 
-const mapStateToProps = () => {};
-
+const mapStateToProps = state => ({
+  item: state.item
+});
 const mapDispatchToProps = dispatch => {
   return {
     addItem: item => {

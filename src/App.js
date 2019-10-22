@@ -9,7 +9,7 @@ import Jumbo from "./components/021-jumbo/Jumbo";
 import Text from "./components/021-jumbo/Text";
 import ReduxPlayground from "./components/redux/ReduxPlayground";
 import Blog from "./components/090-blog/Blog";
-
+import { connect } from "react-redux";
 ///
 
 import MenuCard from "../src/components/011-navbar/MenuCard";
@@ -24,6 +24,8 @@ function App(props) {
   //console.log(store);
 
   useEffect(() => {
+    console.log("loading user...");
+    props.loadUser();
     // props.store.dispatch(loadUser());
   }, []);
 
@@ -40,4 +42,7 @@ function App(props) {
   );
 }
 
-export default App;
+export default connect(
+  null,
+  { loadUser }
+)(App);

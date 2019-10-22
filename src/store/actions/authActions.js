@@ -13,13 +13,14 @@ import {
 
 //check token & load user
 export const loadUser = () => (dispatch, getState) => {
+  console.log("in loadUser... ");
   // user loading
   dispatch({
     type: USER_LOADING
   });
 
   // get token from local storage
-  const token = getState.auth.token;
+  const token = getState().auth.token;
 
   //Headers
   const config = {
@@ -34,7 +35,9 @@ export const loadUser = () => (dispatch, getState) => {
   }
 
   axios
-    .get("/api/auth/user", config)
+    //    .get("/api/auth/user", config)
+    .get("/api/auth/user", tokenConfig(getState))
+
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -42,9 +45,55 @@ export const loadUser = () => (dispatch, getState) => {
       })
     )
     .catch(err => {
-      dispatch(returnErrors(err.response.data, err.response.msg));
+      dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
         type: AUTH_ERROR
       });
     });
+};
+
+//Register User
+export const register = ({ name, email, password }) => dispatch => {
+  //Headers
+  const config = {
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+  //Request body
+  const body = JSON.stringify({ name, email, password });
+
+  axios
+    .post("/api/users", body, config)
+    .then(res =>
+      dispatch({
+        type: REGISTER_SUCCESS,
+        payload: res.data
+      })
+    )
+    .catch(err => {
+      dispatch(
+        returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
+      );
+      dispatch({ type: REGISTER_FAIL });
+    });
+};
+
+///setup config headers & token
+export const tokenConfig = getState => {
+  // get token from local storage
+  const token = getState().auth.token;
+
+  //Headers
+  const config = {
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+
+  //if token add to headers
+  if (token) {
+    config.headers["x-auth-token"] = token;
+  }
+  return config;
 };
