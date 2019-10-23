@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   Navbar,
   Nav,
@@ -9,6 +9,9 @@ import {
   CardDeck,
   CardGroup
 } from "react-bootstrap";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
 import MenuCard from "./MenuCard";
 import MenuCardM from "./MenuCardM";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,10 +33,31 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import RegisterModal from "../auth/RegisterModal";
+import LoginModal from "../auth/LoginModal";
+
+import Logout from "../auth/Logout";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 //<Link to="/about/">About</Link>
-export default function NavBar() {
+//export default
+function NavBar(props) {
+  const { isAuthenticated, user } = props.auth;
+  const authLinks = (
+    <Fragment>
+      <span className="navbar-text mr-3">
+        <strong>{user ? `welcome ${user.name}` : null}</strong>
+      </span>
+      <Logout />
+    </Fragment>
+  );
+
+  const guestLinks = (
+    <Fragment>
+      <RegisterModal />
+      <LoginModal />
+    </Fragment>
+  );
+
   return (
     <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
       <Navbar.Brand href="#home">
@@ -78,7 +102,7 @@ export default function NavBar() {
         </Nav>
         <Nav>
           <Nav.Link href="#deets">More deets</Nav.Link>
-          <RegisterModal />
+          {isAuthenticated ? authLinks : guestLinks}
           <Nav.Link eventKey={2} href="#memes">
             Dank memes
           </Nav.Link>
@@ -87,3 +111,12 @@ export default function NavBar() {
     </Navbar>
   );
 }
+
+Navbar.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+export default connect(mapStateToProps)(NavBar);

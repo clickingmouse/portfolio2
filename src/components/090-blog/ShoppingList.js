@@ -56,22 +56,24 @@ function ShoppingList(props) {
             {props.item.items.map(({ _id, name }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroup.Item>
-                  <Button
-                    className="remove-btn"
-                    color="danger"
-                    size="sm"
-                    onClick={
-                      onDeleteClick.bind(this, _id)
-                      //() => {
-                      // this.setState(state=>({
-                      // items: state.items.filter(item => item.id!==id )}))
-                      //*
-                      //   setItems(items => items.filter(item => item.id !== id));
-                      // }
-                    }
-                  >
-                    &times;
-                  </Button>
+                  {props.isAuthenticated ? (
+                    <Button
+                      className="remove-btn"
+                      color="danger"
+                      size="sm"
+                      onClick={
+                        onDeleteClick.bind(this, _id)
+                        //() => {
+                        // this.setState(state=>({
+                        // items: state.items.filter(item => item.id!==id )}))
+                        //*
+                        //   setItems(items => items.filter(item => item.id !== id));
+                        // }
+                      }
+                    >
+                      &times;
+                    </Button>
+                  ) : null}
                   {name} - {_id}
                 </ListGroup.Item>
               </CSSTransition>
@@ -85,11 +87,13 @@ function ShoppingList(props) {
 
 ShoppingList.propTypes = {
   getItems: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  item: state.item
+  item: state.item,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => {

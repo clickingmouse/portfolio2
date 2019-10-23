@@ -3,6 +3,7 @@ import { Button, Modal, Form, Label, Input, FormLabel } from "react-bootstrap";
 import { connect } from "react-redux";
 import { addItem } from "../../store/actions/itemActions";
 //import uuid from "uuid";
+import PropTypes from "prop-types";
 const ItemModal = props => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
@@ -30,13 +31,17 @@ const ItemModal = props => {
   };
   return (
     <>
-      <Button
-        variant="primary"
-        onClick={handleShow}
-        style={{ marginBottom: "2rem" }}
-      >
-        Add Item
-      </Button>
+      {props.isAuthenticated ? (
+        <Button
+          variant="primary"
+          onClick={handleShow}
+          style={{ marginBottom: "2rem" }}
+        >
+          Add Item
+        </Button>
+      ) : (
+        <h4 className="mb-3 ml-4">Please login to mange items</h4>
+      )}
 
       <Modal show={show} onHide={handleClose}>
         <Form onSubmit={onSubmit}>
@@ -69,8 +74,12 @@ const ItemModal = props => {
   );
 };
 
+ItemModal.propTypes = {
+  isAuthenticated: PropTypes.bool
+};
 const mapStateToProps = state => ({
-  item: state.item
+  item: state.item,
+  isAuthenticated: state.auth.isAuthenticated
 });
 const mapDispatchToProps = dispatch => {
   return {
@@ -81,6 +90,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ItemModal);
